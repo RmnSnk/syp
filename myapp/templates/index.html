@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Bienvenue sur SYP</title>
+	<link rel="stylesheet" type="text/css" href="../static/styles/styles.css">
+	<meta charset="utf-8">
+</head>
+
+
+<body>
+
+	<header>
+		<img class="logo_page" src="../static/images/logo.png" alt="logo du logiciel">
+	</header>
+
+
+	<nav>
+		<ul>
+			<li><a href="Acceuil.html">Accueil</a></li>
+			<li><a href="Aide.html">Aide</a></li>
+			<li><a href="Contact.html">Contact</a></li>
+		</ul>
+	</nav>
+
+	
+	<h1>Liste des affaires</h1>
+	
+	<p>Le logiciel SYP (Sql PYthon) permet de répartir facilement les contentieux entre les agents d'un SIP qu'ils soient en télétravail ou en présentiel</p>
+
+		<table>
+            <tr>
+            	<th>Numero</th>
+            	<th>Dossier</th>
+            	<th>Adresse</th>
+            	<th>Age (jours)</th>
+            	<th>Agent</th>
+            </tr>
+
+            <tr>
+            {% for ligne in liste_affaires %}
+				<td>{{ ligne[0] }}</td>
+				<td>{{ ligne[1] }}</td>
+				<td>{{ ligne[2] }}</td>
+				<td>{{ ligne[3] }}</td>
+				<td>{{ ligne[4] }}</td>
+            </tr>
+			{% endfor %}
+  		</table>
+
+
+
+	<footer>
+		<p class="footer">Copyright Puffin</p>
+	</footer>
+
+</body>
+</html>

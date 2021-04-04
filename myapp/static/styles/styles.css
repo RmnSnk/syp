@@ -1,0 +1,97 @@
+/* IMPORTANT : Mise à jour de la feuille de style */
+/* Lorsque le site accédé par 127.0.0.1:5000 (via flask) les fichiers statics
+sont gardés en cache. Donc si on modifie la feuille de style, il ne se passe rien ...
+Pour contourner le problème, il suffit de faire (sous chrome) CRL + SHIFT + R pour
+forcer le rechargement des fichiers statics */
+
+
+
+/* Palette */
+*{
+	--blackcst: #1E1E24;
+	--whitecst: #F5F5F5;
+	--redcst: #C78283;
+	--bluecst: #0091AD;
+	font-family: RRegular, arial;
+}
+
+header{
+	background-color: var(--bluecst);
+}
+
+/* Mise en forme du logo en haut de page */
+.logo_page {
+  width: 300px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 30px;
+}
+
+nav{
+	background-color: var(--whitecst);
+}
+
+
+/* Polices */
+@font-face {
+	font-family: 'RBlack';
+	src : url('fonts/Raleway-Blak.ttf'); /* dans syles/fonts */
+
+	font-family: 'RRegular';
+	src : url('fonts/Raleway-Regular.ttf');
+}
+
+body{
+	background-color: var(--whitecst) ;
+	font-size: 1.2em;
+}
+
+
+/* Titres */
+
+h1{
+	color : white;
+	font-size: 2.0em;
+	font-family: RBlack, arial;
+	text-decoration: none;
+	background-color: var(--bluecst);
+	opacity : 1;
+	text-align: center;
+}
+
+p{
+	color: var(--blackcst);
+	font-size: 1.2em;
+	font-family: RRegular, arial;
+	text-align: justify;
+}
+
+p.footer{
+	text-align: center;
+	font-size: 0.8em;
+}
+
+table{
+border-collapse: collapse;
+width: 90%;
+margin: auto;
+}
+
+th, td{
+border: 2px solid var(--blackcst);
+text-align: center;
+vertical-align: middle;
+padding: 10px;
+}
+
+th {
+	background-color: var(--bluecst);
+	font-size: 1.2em;
+	color: var(--whitecst)
+}
+
+/* Pour avoir une ligne sur deux grise dans les tableau */
+table tr:nth-child(odd){
+  background-color:lightgrey;
+}
