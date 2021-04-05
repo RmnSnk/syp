@@ -10,8 +10,12 @@ forcer le rechargement des fichiers statics */
 *{
 	--blackcst: #1E1E24;
 	--whitecst: #F5F5F5;
-	--redcst: #C78283;
 	--bluecst: #0091AD;
+	--darkbluecst: #00667a;
+	--lightgreycst: #d3d3d3;
+	--redcst: #C78283;
+	--greencst:#21A179;
+
 	font-family: RRegular, arial;
 }
 
@@ -21,15 +25,79 @@ header{
 
 /* Mise en forme du logo en haut de page */
 .logo_page {
-  width: 300px;
+  width: 200px;
   display: block;
   margin-left: auto;
   margin-right: auto;
-  padding: 30px;
+  padding: 10px;
 }
 
-nav{
-	background-color: var(--whitecst);
+/* Menu de navigation principal*/
+
+#navigation{
+	display: flex;
+	justify-content: space-between;
+	background-color: var(--bluecst);
+}
+
+nav.menu-nav, nav.menu-nav-right{
+	display: block;
+	background-color: var(--bluecst);
+	text-align: left;
+	margin-bottom: 10px;
+	margin-right: 10px;
+	margin-left: 10px;
+}
+
+/* Colle le menu à la bannière */
+nav.menu-nav ul, nav.menu-nav-right ul{
+	padding: 0;
+	margin:0;
+}
+	/* Accueil et Aide */
+nav.menu-nav ul li.btn {
+	display: inline-block;
+	list-style: none;
+	padding: 10px;
+	
+}
+
+
+nav.menu-nav ul li.btn a {
+	color: var(--whitecst);
+	text-decoration: none;
+	background-color: var(--bluecst);
+	padding: 10px;
+	border-radius: 10%;
+}
+
+nav.menu-nav ul li.btn:hover a {
+	color: var(--whitecst);
+	background-color: var(--darkbluecst);
+	transition: 0.3s all;
+}
+
+	/* Connexion */
+nav.menu-nav-right ul li.btn-right {
+	/*display: inline-block;*/
+	list-style: none;
+	padding: 10px;
+	background-color: var(--bluecst);
+}
+
+
+nav.menu-nav-right ul li.btn-right a {
+	color: var(--whitecst);
+	text-decoration: none;
+	background-color: var(--greencst);
+	padding: 10px;
+	border-radius: 10%;
+}
+
+nav.menu-nav-right ul li.btn-right:hover a {
+	color: var(--whitecst);
+	background-color: var(--darkbluecst);
+	transition: 0.3s all;
 }
 
 
@@ -51,7 +119,13 @@ body{
 /* Titres */
 
 h1{
-	color : white;
+	width: 95%;
+	margin-top:30px;
+	margin-bottom: auto;
+	margin-right: auto;
+	margin-left: auto;
+	padding: 10px;
+	color : var(--whitecst);
 	font-size: 2.0em;
 	font-family: RBlack, arial;
 	text-decoration: none;
@@ -60,11 +134,14 @@ h1{
 	text-align: center;
 }
 
+/* Paragraphes */
 p{
 	color: var(--blackcst);
 	font-size: 1.2em;
 	font-family: RRegular, arial;
 	text-align: justify;
+	padding-left: 2.5%;
+	padding-right: 2.5%;
 }
 
 p.footer{
@@ -74,7 +151,7 @@ p.footer{
 
 table{
 border-collapse: collapse;
-width: 90%;
+width: 95%;
 margin: auto;
 }
 
@@ -93,5 +170,5 @@ th {
 
 /* Pour avoir une ligne sur deux grise dans les tableau */
 table tr:nth-child(odd){
-  background-color:lightgrey;
+  background-color:var(--lightgreycst);
 }
