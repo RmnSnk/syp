@@ -1,10 +1,9 @@
 # syp
-Application d'aide au manager
+Projet d'entrainement au python / Flask / HTML-CSS : Application d'aide au manager
 
-Webapp python / flask projet to train me in python.
 
 Cette application doit permettre au manager de distribuer le travail à traiter aux différents collaborateurs qu'ils soit en présentiel ou en télétravail.
-L'alimentation en nouveaux dossierq se fait par un fichier csv encodé en latin3 qui est exporté depuis une application métier (ILLIAD).
+L'alimentation en nouveaux dossiers se fait par un fichier csv encodé en latin3 qui est exporté depuis une application métier (ILLIAD).
 
 L'application se veut modulaire : d'autres suivit autres que les contentieux doivent pouvoir y être intégrés facilement.
 
