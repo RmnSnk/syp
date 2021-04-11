@@ -9,6 +9,9 @@ import os
 # Le chemin d'accès de répertoire de l'application (~/PycharmProjects/syp_migration)
 basedir = os.path.abspath(os.path.dirname(__file__))
 
+# Secret Key
+SECRET_KEY = "dev"
+
 # Paramètres pour Flask_SQLAlchemy
 SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir, 'app.db')
 SQLALCHEMY_ECHO = True # Pour avoir l'affichage des requetes
