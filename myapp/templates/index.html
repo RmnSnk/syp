@@ -1,34 +1,6 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Bienvenue sur SYP</title>
-	<link rel="stylesheet" type="text/css" href="../static/styles/styles.css">
-	<meta charset="utf-8">
-</head>
+{% extends "base.html" %}
 
-
-<body>
-
-	<header>
-		<img class="logo_page" src="../static/images/logo.png" alt="logo du logiciel">
-	</header>
-
-
-	<div id="navigation">
-		<nav class="menu-nav">
-			<ul>
-				<li class="btn"><a href="Acceuil.html">Accueil</a></li>
-				<li class="btn"><a href="Aide.html">Aide</a></li>
-			</ul>
-		</nav>
-
-		<nav class="menu-nav-right">
-			<ul>
-				<li class="btn-right"><a href="/auth">Connexion</a></li>
-			</ul>
-		</nav>
-	</div>
-
+{% block content %}
 	
 	<h1>Liste des affaires</h1>
 	
@@ -54,11 +26,4 @@
 			{% endfor %}
   		</table>
 
-
-
-	<footer>
-		<p class="footer">Copyright Puffin</p>
-	</footer>
-
-</body>
-</html>
+{% endblock %}
