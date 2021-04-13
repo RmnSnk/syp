@@ -4,7 +4,7 @@
 Blueprint de l'application principale : index, contact, aide ...
 """
 
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template, url_for
 from .models import Affaire
 from datetime import datetime
 
@@ -12,6 +12,7 @@ from datetime import datetime
 main_blueprint = Blueprint('main_blueprint', __name__, url_prefix='/')
 
 @main_blueprint.route('/') #renvoie vers /
+@main_blueprint.route('/index')
 def index():
 
     requete = Affaire.query.order_by(Affaire.date_demande)

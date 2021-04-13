@@ -199,3 +199,8 @@ table tr:nth-child(odd){
 	border: none;
 	border-radius: 5%;
 }
+
+#form-error{
+	font-size: 0.7em;
+	color: var(--redcst);
+}

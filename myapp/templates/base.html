@@ -21,17 +21,28 @@
 	<div id="navigation">
 		<nav class="menu-nav">
 			<ul>
-				<li class="btn"><a href="/#">Accueil</a></li>
+				<li class="btn"><a href="{{ url_for('main_blueprint.index') }}">Accueil</a></li>
 				<li class="btn"><a href="Aide.html">Aide</a></li>
 			</ul>
 		</nav>
 
 		<nav class="menu-nav-right">
 			<ul>
-				<li class="btn-right"><a href="/auth">Connexion</a></li>
+				<li class="btn-right"><a href="{{ url_for('auth_blueprint.auth') }}">Connexion</a></li>
 			</ul>
 		</nav>
 	</div>
+
+	<hr>
+	{% with messages = get_flashed_messages() %}
+	{% if messages %}
+	<ul>
+		{% for message in messages %}
+		<li>{{ message }}</li>
+		{% endfor %}
+	</ul>
+	{% endif %}
+	{% endwith %}
 
 	{% block content %}
 
