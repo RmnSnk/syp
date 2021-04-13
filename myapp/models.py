@@ -73,7 +73,7 @@ class User(db.Model):
 def init_db():
     db.drop_all()
     db.create_all()
-    lg.warning('Database initialized')
+    lg.warning('Database Affaires and User initialized')
 
 
 
