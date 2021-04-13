@@ -172,3 +172,30 @@ th {
 table tr:nth-child(odd){
   background-color:var(--lightgreycst);
 }
+
+/* Formulaire_login */
+
+#formulaire{
+	margin-top : 30px;
+	display: flex;
+	justify-content: center;
+}
+
+
+#form-input-login{
+	font-size: 1em;
+	margin-top: 10px;
+}
+
+#form-remerberme-label{
+	font-size: 0.7em;
+}
+
+#form-remerberme-submit{
+	font-size: 0.7em;
+	padding: 10px;
+	color: var(--whitecst);
+	background-color: var(--greencst);
+	border: none;
+	border-radius: 5%;
+}

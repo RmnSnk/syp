@@ -1,7 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
+	{% if title %}
+	<title>{{ title }} - SYP</title>
+	{% else %}
 	<title>Bienvenue sur SYP</title>
+	{% endif %}
 	<link rel="stylesheet" type="text/css" href="../static/styles/styles.css">
 	<meta charset="utf-8">
 </head>

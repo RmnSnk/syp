@@ -9,6 +9,7 @@ https://hackersandslackers.com/flask-application-factory/
 
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+from config import Config
 
 
 db = SQLAlchemy() # On la crée vide
@@ -16,8 +17,8 @@ db = SQLAlchemy() # On la crée vide
 
 def create_app():
     app = Flask(__name__, instance_relative_config=True)
-    app.config.from_object('config')
-    app.config.from_pyfile('config.py')
+    app.config.from_object(Config)      # Configuration de base de l'application dans l'objet config
+    app.config.from_pyfile('config.py') # Configuration particulières de l'instance
 
     db.init_app(app) # + db = SQLAlhemyq() -> equivaut à db = SQLAlchemy(app)
 

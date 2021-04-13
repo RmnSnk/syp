@@ -29,5 +29,5 @@ def index():
         liste_aff.append(l)
 
 
-    return render_template('index.html', liste_affaires=liste_aff)
+    return render_template('index.html',title="Bienvenue", liste_affaires=liste_aff)
 

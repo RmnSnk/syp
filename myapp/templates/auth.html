@@ -3,18 +3,20 @@
 {% block content %}
 
     <h1>Connexion</h1>
-    <form action="" method="post" novalidate>
-    	{{ form.hidden_tag() }}
-    	<p>
-    		{{ form.username.label }} </br>
-    		{{ form.username(size=32)}}
-    	</p>
-    	<p>
-    		{{ form.password.label }} </br>
-    		{{ form.password(size=32) }}
-    	</p>
-    	<p>{{ form.remember_me() }} {{form.remember_me.label }}</p>
-    	<p>{{ form.submit() }}</p>
-    </form>
+    <div id=formulaire>
+        <form action="" method="post" novalidate>
+        	{{ form.hidden_tag() }}
+        	<p>
+        		{{ form.username.label }} </br>
+        		{{ form.username(id="form-input-login", size=32)}}
+        	</p>
+        	<p>
+        		{{ form.password.label }} </br>
+        		{{ form.password(id="form-input-login", size=32) }}
+        	</p>
+        	<p>{{ form.remember_me() }} {{form.remember_me.label(id="form-remerberme-label") }}</p>
+        	<p>{{ form.submit(id="form-remerberme-submit") }}</p>
+        </form>
+    </div>
 
 {% endblock %}

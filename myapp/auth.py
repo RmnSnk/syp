@@ -13,5 +13,5 @@ auth_blueprint = Blueprint('auth_blueprint', __name__, url_prefix='/auth')
 @auth_blueprint.route('/') #renvoie vers /auth
 def auth():
     formulaire = form.LoginForm()
-    return render_template('auth.html', form=formulaire)
+    return render_template('auth.html',title="Login", form=formulaire)
 
