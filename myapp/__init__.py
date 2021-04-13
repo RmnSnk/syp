@@ -9,18 +9,22 @@ https://hackersandslackers.com/flask-application-factory/
 
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+from flask_migrate import Migrate
 from config import Config
 
 
-db = SQLAlchemy() # On la crée vide
-
+# On créer les objets vides
+db = SQLAlchemy()
+migrate = Migrate()
 
 def create_app():
     app = Flask(__name__, instance_relative_config=True)
     app.config.from_object(Config)      # Configuration de base de l'application dans l'objet config
     app.config.from_pyfile('config.py') # Configuration particulières de l'instance
 
-    db.init_app(app) # + db = SQLAlhemyq() -> equivaut à db = SQLAlchemy(app)
+    # On instancie les objets
+    db.init_app(app) # + db = -> equivaut à db = SQLAlchemy(app)
+    migrate.init_app(app, db) # + migrate -> equivaut à migrate = Migrate(app, db)
 
     """
     Ici on va avoir un problème de dépendences circulaire si on utilise pas le gestionnaire de contexte.

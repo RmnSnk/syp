@@ -5,7 +5,7 @@ import logging as lg
 from . import db
 from .utils_csv import *
 
-# remarque : ou fois db comporte également db.session, la session SQLAlchemy
+""" Partie relative à la table Affaire qui stocke les affaires"""
 
 class Affaire(db.Model):
 
@@ -46,13 +46,6 @@ class ListeToBdd:
             db.session.add(affaire)
             db.session.commit()
 
-
-
-def init_db():
-    db.drop_all()
-    db.create_all()
-    lg.warning('Database initialized')
-
 def ajout_fichier_csv():
     csv = Cvs_import(PATHTOCSVFILELATIN)
     csv.csvToObject()
@@ -61,5 +54,26 @@ def ajout_fichier_csv():
     listeToBdd = ListeToBdd(csv.pythonObject)
     listeToBdd.importationDansLaBdd()
     lg.warning('Fichier importé')
+
+
+""" Partie relative à la table User qui gère les utilisateurs """
+
+class User(db.Model):
+    id = db.Column(db.Integer, primary_key=True) # TODO : Pour le moment un entier qui incrémente, remplacer par le numéro DGI
+    username = db.Column(db.String(64), index=True, unique=True)
+    email= db.Column(db.String(120), index=True, unique=True)
+    password_hash = db.Column(db.String(128))
+
+    def __repr__(self):
+        return f"Utilisateur  {self.username}"
+
+
+""" Création des tables """
+
+def init_db():
+    db.drop_all()
+    db.create_all()
+    lg.warning('Database initialized')
+
 
 
