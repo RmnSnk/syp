@@ -10,12 +10,15 @@ https://hackersandslackers.com/flask-application-factory/
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
+from flask_login import LoginManager
 from config import Config
+
 
 
 # On créer les objets vides
 db = SQLAlchemy()
 migrate = Migrate()
+login = LoginManager()
 
 def create_app():
     app = Flask(__name__, instance_relative_config=True)
@@ -25,6 +28,7 @@ def create_app():
     # On instancie les objets
     db.init_app(app) # + db = -> equivaut à db = SQLAlchemy(app)
     migrate.init_app(app, db) # + migrate -> equivaut à migrate = Migrate(app, db)
+    login.init_app(app) # idem
 
     """
     Ici on va avoir un problème de dépendences circulaire si on utilise pas le gestionnaire de contexte.
@@ -49,12 +53,18 @@ app = create_app()
 
 # Pour initialiser la bdd app.bd
 import myapp.models
-@app.cli.command("init_db_test") # Très important, ne pas oublié de passer "init_db" en paramètre au décorateur
-def init_db_test():
+@app.cli.command("init_db") # Très important, ne pas oublié de passer "init_db" en paramètre au décorateur
+def init_db():
     models.init_db()
 
 # Pour incorporer le fichier de test (qui comprend les premières affaires)
-@app.cli.command("ajout_fichier_csv_test")
-def ajout_fichier_csv_test():
+@app.cli.command("ajout_fichier_csv")
+def ajout_fichier_csv():
     models.ajout_fichier_csv()
+
+from .models import Affaire, User # Placé ici pour éviter les dépendances circulaires
+
+@app.shell_context_processor
+def make_shell_context():
+    return {'db': db, 'User': User, 'Affaire': Affaire}
 

@@ -25,7 +25,7 @@ def index():
         # Lorque l'on soustrait 2 date, le résultat est un objet timedelta qui est donné en jour, minute, secondes
         # La methode .days permet de ne garder que les jours
         l.append((datetime.today().date() - aff.date_demande).days)
-        l.append(aff.agent)
+        l.append(aff.agent_id)
         l.append(aff.date_demande)
         liste_aff.append(l)
 

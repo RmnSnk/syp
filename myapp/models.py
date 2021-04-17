@@ -1,8 +1,11 @@
 
 from datetime import datetime
 import logging as lg
+from werkzeug.security import generate_password_hash, check_password_hash
+from flask_login import UserMixin
 
-from . import db
+
+from . import db, login
 from .utils_csv import *
 
 """ Partie relative à la table Affaire qui stocke les affaires"""
@@ -15,7 +18,7 @@ class Affaire(db.Model):
     dossier = db.Column(db.String) # Nom contribuable
     adresse = db.Column(db.String) # Adresse Contribuable
     date_demande = db.Column(db.Date) # Date de la demande
-    agent = db.Column(db.String) # Agent qui traite le dossier
+    agent_id = db.Column(db.Integer, db.ForeignKey('user.id')) # Agent qui traite le dossier table user, champ id
     etat = db.Column(db.Boolean) # False : non traité, True : traité
 
 
@@ -25,8 +28,11 @@ class Affaire(db.Model):
         self.dossier = dict_affaire['Dossier']
         self.adresse = dict_affaire['Adresse']
         self.date_demande = (datetime.strptime(dict_affaire['Date demande'], "%d/%m/%Y")).date()
-        self.agent = None
+        self.agent_id = None
         self.etat = False
+
+    def __repr__(self):
+        return f"Affaire {self.numero} | Contribuable {self.dossier}"
 
 
 class ListeToBdd:
@@ -58,14 +64,26 @@ def ajout_fichier_csv():
 
 """ Partie relative à la table User qui gère les utilisateurs """
 
-class User(db.Model):
+class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True) # TODO : Pour le moment un entier qui incrémente, remplacer par le numéro DGI
     username = db.Column(db.String(64), index=True, unique=True)
     email= db.Column(db.String(120), index=True, unique=True)
     password_hash = db.Column(db.String(128))
+    affaire = db.relationship('Affaire', backref='agent', lazy='dynamic')
 
     def __repr__(self):
         return f"Utilisateur  {self.username}"
+
+    def set_password(self, password):
+        self.password_hash = generate_password_hash(password)
+
+    def check_password(self, password):
+        return check_password_hash(self.password_hash, password)
+
+
+@login.user_loader
+def load_user(id):
+    return User.query.get(int(id))
 
 
 """ Création des tables """
