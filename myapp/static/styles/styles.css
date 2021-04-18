@@ -78,26 +78,34 @@ nav.menu-nav ul li.btn:hover a {
 }
 
 	/* Connexion */
-nav.menu-nav-right ul li.btn-right {
-	/*display: inline-block;*/
+nav.menu-nav-right ul li.btn-right-conn, li.btn-right-deco {
 	list-style: none;
 	padding: 10px;
 	background-color: var(--bluecst);
 }
 
-
-nav.menu-nav-right ul li.btn-right a {
+    /* Style des buttons connecté et déconnectés */
+    /* Caractéristiques communes aux deux boutons*/
+nav.menu-nav-right ul li.btn-right-conn a, li.btn-right-deco a {
 	color: var(--whitecst);
 	text-decoration: none;
-	background-color: var(--greencst);
+	/*background-color: var(--greencst);*/
 	padding: 10px;
 	border-radius: 10%;
 }
 
-nav.menu-nav-right ul li.btn-right:hover a {
+nav.menu-nav-right ul li.btn-right-conn:hover a, li.btn-right-deco:hover a {
 	color: var(--whitecst);
 	background-color: var(--darkbluecst);
 	transition: 0.3s all;
+}
+	/* Différence entre les boutons*/
+nav.menu-nav-right ul li.btn-right-conn a {
+	background-color: var(--greencst);
+}
+
+nav.menu-nav-right ul li.btn-right-deco a {
+	background-color: var(--redcst);
 }
 
 
@@ -167,6 +175,7 @@ th {
 	font-size: 1.2em;
 	color: var(--whitecst)
 }
+
 
 /* Pour avoir une ligne sur deux grise dans les tableau */
 table tr:nth-child(odd){

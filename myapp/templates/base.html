@@ -28,7 +28,11 @@
 
 		<nav class="menu-nav-right">
 			<ul>
-				<li class="btn-right"><a href="{{ url_for('auth_blueprint.auth') }}">Connexion</a></li>
+				{% if current_user.is_anonymous %}
+				<li class="btn-right-conn"><a href="{{ url_for('auth_blueprint.auth') }}">Connexion</a></li>
+				{% else %}
+				<li class="btn-right-deco"><a href="{{ url_for('auth_blueprint.logout') }}">Déconnexion</a></li>
+				{% endif %}
 			</ul>
 		</nav>
 	</div>

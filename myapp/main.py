@@ -7,6 +7,7 @@ Blueprint de l'application principale : index, contact, aide ...
 from flask import Blueprint, render_template, url_for
 from .models import Affaire
 from datetime import datetime
+from flask_login import login_required
 
 # Blueprint
 main_blueprint = Blueprint('main_blueprint', __name__, url_prefix='/')
@@ -28,7 +29,8 @@ def index():
         l.append(aff.agent_id)
         l.append(aff.date_demande)
         liste_aff.append(l)
-
-
     return render_template('index.html',title="Bienvenue", liste_affaires=liste_aff)
 
+@main_blueprint.route('/test')
+def test():
+    return "Test"

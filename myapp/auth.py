@@ -5,7 +5,7 @@ Ensemble des routes pour l'authentification
 """
 
 from flask import Blueprint, render_template, flash, redirect, url_for
-from flask_login import current_user, login_user
+from flask_login import current_user, login_user, logout_user
 from . import form
 from .models import User
 
@@ -22,7 +22,13 @@ def auth():
         if user is None or not user.check_password(formulaire.password.data):
             flash('Utilisateur ou mot de passe invalide')
             redirect(url_for('auth_blueprint.auth'))
-        login_user(user, remember=formulaire.remember_me.data)
-        return redirect(url_for('main_blueprint.index'))
+        else: #Ajout du else sinon toujours loggé (différence par rapport au livre)
+            login_user(user, remember=formulaire.remember_me.data)
+            return redirect(url_for('main_blueprint.index'))
     return render_template('auth.html', title="Login", form=formulaire)
+
+@auth_blueprint.route('/logout') #renvoie vers /auth
+def logout():
+    logout_user()
+    return redirect(url_for('main_blueprint.index'))
 
