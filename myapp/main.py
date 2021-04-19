@@ -15,7 +15,7 @@ main_blueprint = Blueprint('main_blueprint', __name__, url_prefix='/')
 @main_blueprint.route('/') #renvoie vers /
 @main_blueprint.route('/index')
 def index():
-    render_template('index.html')
+    return render_template('index.html')
 
 
 

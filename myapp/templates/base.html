@@ -31,6 +31,7 @@
 				{% if current_user.is_anonymous %}
 				<li class="btn-right-conn"><a href="{{ url_for('auth_blueprint.auth') }}">Connexion</a></li>
 				{% else %}
+				<li class="btn"><a href="{{ url_for('main_blueprint.mes_affaires') }}">Mes Affaires</a></li>
 				<li class="btn-right-deco"><a href="{{ url_for('auth_blueprint.logout') }}">Déconnexion</a></li>
 				{% endif %}
 			</ul>

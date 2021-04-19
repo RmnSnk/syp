@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+	
+	<h1>Liste des affaires</h1>
+	
+	<p>Le logiciel SYP (Sql PYthon) permet de répartir facilement les contentieux entre les agents d'un SIP qu'ils soient en télétravail ou en présentiel</p>
+
+		<table>
+            <tr>
+            	<th>Numero</th>
+            	<th>Dossier</th>
+            	<th>Adresse</th>
+            	<th>Age (jours)</th>
+            	<th>Agent</th>
+            </tr>
+
+            <tr>
+            {% for ligne in liste_affaires %}
+				<td>{{ ligne[0] }}</td>
+				<td>{{ ligne[1] }}</td>
+				<td>{{ ligne[2] }}</td>
+				<td>{{ ligne[3] }}</td>
+				<td>{{ ligne[4] }}</td>
+            </tr>
+			{% endfor %}
+  		</table>
+
+{% endblock %}

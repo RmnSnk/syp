@@ -40,7 +40,7 @@ header{
 	background-color: var(--bluecst);
 }
 
-nav.menu-nav, nav.menu-nav-right{
+nav.menu-nav {
 	display: block;
 	background-color: var(--bluecst);
 	text-align: left;
@@ -49,21 +49,37 @@ nav.menu-nav, nav.menu-nav-right{
 	margin-left: 10px;
 }
 
+nav.menu-nav-right {
+	display: block;
+	background-color: var(--bluecst);
+	text-align: right;
+	margin-bottom: 10px;
+	margin-right: 10px;
+	margin-left: 10px;
+}
+
+
 /* Colle le menu à la bannière */
 nav.menu-nav ul, nav.menu-nav-right ul{
 	padding: 0;
 	margin:0;
 }
 	/* Accueil et Aide */
-nav.menu-nav ul li.btn {
+nav.menu-nav ul li.btn { 
 	display: inline-block;
 	list-style: none;
 	padding: 10px;
-	
+}
+
+	/* Mes affaires */
+nav.menu-nav-right ul li.btn { 
+	display: inline-block;
+	list-style: none;
+	padding: 10px;
 }
 
 
-nav.menu-nav ul li.btn a {
+nav.menu-nav ul li.btn a, nav.menu-nav-right ul li.btn a {
 	color: var(--whitecst);
 	text-decoration: none;
 	background-color: var(--bluecst);
@@ -71,7 +87,7 @@ nav.menu-nav ul li.btn a {
 	border-radius: 10%;
 }
 
-nav.menu-nav ul li.btn:hover a {
+nav.menu-nav ul li.btn:hover a, nav.menu-nav-right ul li.btn:hover a {
 	color: var(--whitecst);
 	background-color: var(--darkbluecst);
 	transition: 0.3s all;
@@ -79,6 +95,7 @@ nav.menu-nav ul li.btn:hover a {
 
 	/* Connexion */
 nav.menu-nav-right ul li.btn-right-conn, li.btn-right-deco {
+	display: inline-block;
 	list-style: none;
 	padding: 10px;
 	background-color: var(--bluecst);
