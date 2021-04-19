@@ -29,6 +29,7 @@ def create_app():
     db.init_app(app) # + db = -> equivaut à db = SQLAlchemy(app)
     migrate.init_app(app, db) # + migrate -> equivaut à migrate = Migrate(app, db)
     login.init_app(app) # idem
+    login.login_view = 'auth_blueprint.auth'
 
     """
     Ici on va avoir un problème de dépendences circulaire si on utilise pas le gestionnaire de contexte.
