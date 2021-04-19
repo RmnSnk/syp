@@ -22,6 +22,7 @@ def index():
 @main_blueprint.route('/mes_affaires')
 @login_required
 def mes_affaires():
+    requete = Affaire.query.order_by(Affaire.date_demande)
     liste_aff = []
     for aff in requete:
         l = []
@@ -34,7 +35,7 @@ def mes_affaires():
         l.append(aff.agent_id)
         l.append(aff.date_demande)
         liste_aff.append(l)
-    return render_template('mes_affaires.html',title="Bienvenue", liste_affaires=liste_aff)
+    return render_template('mes_affaires.html', title="Bienvenue", liste_affaires=liste_aff)
 
 @main_blueprint.route('/test')
 def test():
