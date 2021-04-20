@@ -32,6 +32,7 @@
 				<li class="btn-right-conn"><a href="{{ url_for('auth_blueprint.auth') }}">Connexion</a></li>
 				{% else %}
 				<li class="btn"><a href="{{ url_for('agent_blueprint.mes_affaires') }}">Mes Affaires</a></li>
+				<li class="btn"><a href="{{ url_for('manager_blueprint.manager') }}">Gérer les Utilisateurs</a></li>
 				<li class="btn-right-deco"><a href="{{ url_for('auth_blueprint.logout') }}">Déconnexion</a></li>
 				{% endif %}
 			</ul>

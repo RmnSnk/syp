@@ -34,6 +34,6 @@ class RegistrationForm(FlaskForm):
             raise ValidationError('Merci de saisir un autre nom d\'utilisateur')
 
     def validate_email(self, email):
-        user = User.query.filter_by(email=email.date).first()
+        user = User.query.filter_by(email=email.data).first()
         if user is not None:
             raise ValidationError('Merci de saisir une adresse email différente')

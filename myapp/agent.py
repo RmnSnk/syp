@@ -28,4 +28,4 @@ def mes_affaires():
         l.append(aff.agent_id)
         l.append(aff.date_demande)
         liste_aff.append(l)
-    return render_template('mes_affaires.html', title="Bienvenue", liste_affaires=liste_aff)
+    return render_template('mes_affaires.html', title="Espace agent", liste_affaires=liste_aff)

@@ -67,7 +67,7 @@ def ajout_fichier_csv():
 class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True) # TODO : Pour le moment un entier qui incrémente, remplacer par le numéro DGI
     username = db.Column(db.String(64), index=True, unique=True)
-    email= db.Column(db.String(120), index=True, unique=True)
+    email = db.Column(db.String(120), index=True, unique=True)
     password_hash = db.Column(db.String(128))
     affaire = db.relationship('Affaire', backref='agent', lazy='dynamic')
 
