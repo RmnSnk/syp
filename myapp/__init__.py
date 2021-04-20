@@ -42,9 +42,10 @@ def create_app():
     train de tourner ...) On place donc la suite du code (et la chaine d'application) dans le bon gestionnaire de context !
     """
     with app.app_context():
-        from . import auth, main
+        from . import auth, main, agent
         app.register_blueprint(auth.auth_blueprint)
         app.register_blueprint(main.main_blueprint)
+        app.register_blueprint(agent.agent_blueprint)
 
     return app
 
