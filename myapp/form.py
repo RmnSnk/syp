@@ -20,20 +20,24 @@ class RegistrationForm(FlaskForm):
     TODO: modifier pour n'avoir qu'à saisir le début de l'adresse mail
     TODO: modifier pour créer un mot de passe automatique envoyé par mail
     """
-    username = StringField('Utilisateur', validators=[DataRequired()])
-    email = StringField('Email', validators=[DataRequired(), Email()])
-    numero_dgi = IntegerField('Numéro DGI', validators=[DataRequired()])
+    dgi = IntegerField('Numéro DGI', validators=[DataRequired()])
+    email = StringField('Email Professionnel', validators=[DataRequired(), Email()])
     password = PasswordField('Mot de passe', validators=[DataRequired()])
     password2 = PasswordField('Confirmez le mot de passe', validators=[DataRequired(), EqualTo('password')])
-    manager = BooleanField('Créer un compte manager ?')
+    manager = BooleanField('Créer un manager')
     submit = SubmitField('Créer l\'utilisateur')
-
-    def validate_username(self, username):
-        user = User.query.filter_by(username=username.data).first()
-        if user is not None:
-            raise ValidationError('Merci de saisir un autre nom d\'utilisateur')
 
     def validate_email(self, email):
         user = User.query.filter_by(email=email.data).first()
         if user is not None:
-            raise ValidationError('Merci de saisir une adresse email différente')
+            raise ValidationError('Cet utilisateur existe déjà')
+        l = email.data.split('@')
+        if l[1] != 'dgfip.finances.gouv.fr':
+            raise ValidationError('L\'adresse email doit se terminer par @dgfip.finances.gouv.fr')
+
+    def validate_dgi(self, dgi):
+        if len(str(dgi.data)) != 6:
+            raise ValidationError('Le numéro DGI doit faire exactement 6 chiffes')
+        user = User.query.filter_by(dgi=dgi.data).first()
+        if user is not None:
+            raise ValidationError('Ce numéro a déjà été utilisé')

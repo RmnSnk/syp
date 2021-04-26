@@ -1,0 +1,15 @@
+## Liste des chose à faire
+
+# En cours de travail
+- Compléter la fonction init_db pour créer automatiquement un utilisateur
+
+- Compléter la page manager.html afin de pouvoit gérer les agents déjà crés :
+           * modification (actif ou pas), reset du password, correction des numeros DGI ...
+           * suppression : uniquement si il n'y a plus d'affaire à son nom
+
+
+
+# Pour plus tard :
+La création de l'utilisateur ne devra plus demander que l'adresse mail. Un mot de passe aléatoire sera crée \n
+et les identifiants seront automatiquement envoyés par mail.
+

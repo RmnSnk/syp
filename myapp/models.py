@@ -65,10 +65,13 @@ def ajout_fichier_csv():
 """ Partie relative à la table User qui gère les utilisateurs """
 
 class User(UserMixin, db.Model):
-    id = db.Column(db.Integer, primary_key=True) # TODO : Pour le moment un entier qui incrémente, remplacer par le numéro DGI
+    id = db.Column(db.Integer, primary_key=True)
+    dgi = db.Column(db.Integer, unique=True)
+    email = db.Column(db.String(64), unique=True)
     username = db.Column(db.String(64), index=True, unique=True)
-    email = db.Column(db.String(120), index=True, unique=True)
     password_hash = db.Column(db.String(128))
+    manager = db.Column(db.Boolean) # True : manager, False : agent
+    active = db.Column(db.Boolean) # True : actif, False : inactif
     affaire = db.relationship('Affaire', backref='agent', lazy='dynamic')
 
     def __repr__(self):
@@ -79,6 +82,10 @@ class User(UserMixin, db.Model):
 
     def check_password(self, password):
         return check_password_hash(self.password_hash, password)
+
+    def set_username(self, email):
+        l = email.split('@')
+        self.username = l[0]
 
 
 @login.user_loader

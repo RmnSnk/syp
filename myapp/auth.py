@@ -32,6 +32,7 @@ def auth():
         return redirect(url_for('main_blueprint.index'))
     return render_template('auth.html', title="Login", form=formulaire)
 
+
 @auth_blueprint.route('/logout') #renvoie vers /auth/logout
 def logout():
     logout_user()
