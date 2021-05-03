@@ -60,10 +60,23 @@ import myapp.models
 def init_db():
     models.init_db()
 
+# Pour créer le premier compte manager
+@app.cli.command("init_manager")
+def init_manager():
+    models.init_manager()
+
 # Pour incorporer le fichier de test (qui comprend les premières affaires)
 @app.cli.command("ajout_fichier_csv")
 def ajout_fichier_csv():
     models.ajout_fichier_csv()
+
+# Pour créer les tables, le premiers manager et alimenter la table affaire avec une liste de test
+@app.cli.command("init_all")
+def init_all():
+    models.init_db()
+    models.init_manager()
+    models.ajout_fichier_csv()
+
 
 from .models import Affaire, User # Placé ici pour éviter les dépendances circulaires
 

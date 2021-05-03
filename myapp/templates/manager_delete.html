@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <div id=formulaire>
+        <form action="" method="post">
+            {{ form.hidden_tag() }}
+
+            <p>
+                {{ form.agent.label }}</br>
+                {{ form.agent(id="form-input-login", size=1)}}</br>
+                {% for error in form.errors %}
+                <span id="form-error"> [{{ error }}]</span>
+                {% endfor %}
+            </p>
+
+            <p>
+                {{ form.submit }}</br>
+                {% for error in form.errors %}
+                <span id="form-error"> [{{ error }}]</span>
+                {% endfor %}
+            </p>
+        </form>
+    </div>
+
+{% endblock %}

@@ -2,7 +2,6 @@
 
 {% block content %}
 
-    <h1>Créer un nouvel utilisateur</h1>
     <div id=formulaire>
         <form action="" method="post">
         	{{ form.hidden_tag() }}
@@ -34,9 +33,9 @@
                 <span id="form-error"> [{{ error }}]</span>
                 {% endfor %}
             </p>
-            <p>{{ form.manager() }} {{form.manager.label(id="form-remerberme-label") }}</p>
+            <p>{{ form.manager() }} {{form.manager.label(id="form-newuser-label") }}</p>
 
-        	<p>{{ form.submit(id="form-remerberme-submit") }}</p>
+        	<p>{{ form.submit(id="form-newuser-submit") }}</p>
         </form>
     </div>
 

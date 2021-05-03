@@ -5,7 +5,7 @@ Formulaires du site
 """
 
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, BooleanField, SubmitField, IntegerField
+from wtforms import StringField, PasswordField, BooleanField, SubmitField, IntegerField, SelectField
 from wtforms.validators import ValidationError, DataRequired, Email, EqualTo
 from .models import User
 
@@ -41,3 +41,14 @@ class RegistrationForm(FlaskForm):
         user = User.query.filter_by(dgi=dgi.data).first()
         if user is not None:
             raise ValidationError('Ce numéro a déjà été utilisé')
+
+class DeleteForm(FlaskForm):
+
+    agent = SelectField('Choisir l\'utilisateur à supprimer', choices=["1", "2"])
+    submit = SubmitField('Supprimer l\'utilisateur')
+
+    #TODO : Remplacer les possibilité agent / choice= .... par une liste d'agent
+    #TODO : Cette liste d'agent pourra prendre la forme d'un tupple (id, nom)
+    #TODO : Le champs de rechercher indiquera le nom mais reverra l'id
+
+        #TODO : faire recherche sur la base et renvoyer une liste qui contient tout les username

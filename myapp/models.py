@@ -100,5 +100,15 @@ def init_db():
     db.create_all()
     lg.warning('Database Affaires and User initialized')
 
+""" Création du premier utilisateur"""
+
+def init_manager():
+    user = User(id=1, dgi=222955, email="romain.sonneck@dgfip.finances.gouv.fr", manager=True, active=True)
+    user.set_username(user.email)
+    user.set_password("toto")
+    db.session.add(user)
+    db.session.commit()
+    lg.warning('Premier utilisateur romain.sonneck (Mdp : toto) crée')
+
 
 
