@@ -33,10 +33,13 @@ def manager_create():
 @login_required
 def manager_delete():
     formulaire_deluser = form.DeleteForm()
+    liste_test = form.liste_users() #[1, 2, 3, 4]
+    formulaire_deluser.agent.choices = liste_test
 
     if formulaire_deluser.validate_on_submit():
         user = User.query.filter_by(username=formulaire_deluser.agent.data).first()
         db.session.delete(user)
         db.session.commit()
         flash("Utilisateur supprimé")
+        return redirect(url_for('main_blueprint.index'))
     return render_template('manager_delete.html', title="Espace manager", form=formulaire_deluser)

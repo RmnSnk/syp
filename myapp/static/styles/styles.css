@@ -324,3 +324,24 @@ table tr:nth-child(odd){
 	background-color: var(--greencst);
 	border: none;
 	border-radius: 5%;
+}
+
+
+/* Formulaire pour supprimer un utilisateur */
+
+#form-del-label{
+	font-size: 1.0em;
+	display: inline-block;
+	width: 300px;
+	margin-bottom: 20px;
+}
+
+#form-deluser-submit{
+	font-size: 1.0em;
+	padding: 10px;
+	color: var(--whitecst);
+	background-color: var(--redcst);
+	border: none;
+	border-radius: 5%;
+	margin-top: 20px;
+}

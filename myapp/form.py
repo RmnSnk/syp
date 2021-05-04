@@ -44,11 +44,17 @@ class RegistrationForm(FlaskForm):
 
 class DeleteForm(FlaskForm):
 
-    agent = SelectField('Choisir l\'utilisateur à supprimer', choices=["1", "2"])
+    agent = SelectField('Utilisateur à supprimer', choices=["1", "2"])
     submit = SubmitField('Supprimer l\'utilisateur')
 
-    #TODO : Remplacer les possibilité agent / choice= .... par une liste d'agent
-    #TODO : Cette liste d'agent pourra prendre la forme d'un tupple (id, nom)
-    #TODO : Le champs de rechercher indiquera le nom mais reverra l'id
 
-        #TODO : faire recherche sur la base et renvoyer une liste qui contient tout les username
+
+def liste_users():
+    """
+    :return: liste des usernames de l'ensemble des utilisateur de la base
+    """
+    liste_utilisateurs = User.query.order_by(User.username).all()
+    liste_username = []
+    for utilisateur in liste_utilisateurs:
+        liste_username.append(utilisateur.username)
+    return liste_username

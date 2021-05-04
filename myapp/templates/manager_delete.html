@@ -5,17 +5,16 @@
     <div id=formulaire>
         <form action="" method="post">
             {{ form.hidden_tag() }}
-
             <p>
-                {{ form.agent.label }}</br>
-                {{ form.agent(id="form-input-login", size=1)}}</br>
+                {{ form.agent.label(id="form-del-label", size=100) }}</br>
+                {{ form.agent(id="form-input-login")}}</br>
                 {% for error in form.errors %}
                 <span id="form-error"> [{{ error }}]</span>
                 {% endfor %}
             </p>
 
             <p>
-                {{ form.submit }}</br>
+                {{ form.submit(id="form-deluser-submit") }}</br>
                 {% for error in form.errors %}
                 <span id="form-error"> [{{ error }}]</span>
                 {% endfor %}

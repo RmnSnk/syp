@@ -7,9 +7,6 @@
 # En cours de travail
 - Compléter la page manager.html afin de pouvoit gérer les agents déjà crés :
            * modification (actif ou pas), reset du password, correction des numeros DGI ...
-           * suppression : uniquement si il n'y a plus d'affaire à son nom
-
--Test pour afficher la barre de navigation "manager" aux seuls manager
 
 # Pour plus tard :
 
