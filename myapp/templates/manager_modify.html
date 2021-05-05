@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <div id=formulaire>
+        <form action="" method="post">
+            {{ form.hidden_tag() }}
+
+            <p>
+                {{ form.agent.label(id="form-del-label", size=100) }}</br>
+                {{ form.agent(id="form-input-login")}}</br>
+                {% for error in form.errors %}
+                <span id="form-error"> [{{ error }}]</span>
+                {% endfor %}
+            </p>
+
+            <p>
+                {{ form.dgi.label }} </br>
+                {{ form.dgi(id="form-input-login", size=6)}}</br>
+                {% for error in form.dgi.errors %}
+                <span id="form-error"> [{{ error }}]</span>
+                {% endfor %}
+            </p>
+            <p>
+                {{ form.password.label }} </br>
+                {{ form.password(id="form-input-login", size=32) }}</br>
+                {% for error in form.password.errors %}
+                <span id="form-error"> [{{ error }}]</span>
+                {% endfor %}
+            </p>
+            <p>
+                {{ form.password2.label }} </br>
+                {{ form.password2(id="form-input-login", size=32) }}</br>
+                {% for error in form.password2.errors %}
+                <span id="form-error"> [{{ error }}]</span>
+                {% endfor %}
+            </p>
+            <p>{{ form.manager() }} {{form.manager.label(id="form-newuser-label") }}</p>
+            <p>{{ form.active() }} {{form.active.label(id="form-newuser-label") }}</p>
+
+            <p>{{ form.submit(id="form-newuser-submit") }}</p>
+        </form>
+    </div>
+
+
+{% endblock %}
