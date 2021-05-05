@@ -33,8 +33,8 @@ def manager_create():
 @login_required
 def manager_delete():
     formulaire_deluser = form.DeleteForm()
-    liste_test = form.liste_users() #[1, 2, 3, 4]
-    formulaire_deluser.agent.choices = liste_test
+    liste_username = form.liste_users()
+    formulaire_deluser.agent.choices = liste_username
 
     if formulaire_deluser.validate_on_submit():
         user = User.query.filter_by(username=formulaire_deluser.agent.data).first()
@@ -43,3 +43,23 @@ def manager_delete():
         flash("Utilisateur supprimé")
         return redirect(url_for('main_blueprint.index'))
     return render_template('manager_delete.html', title="Espace manager", form=formulaire_deluser)
+
+@manager_blueprint.route('modify', methods=['GET', 'POST'])
+@login_required
+def manager_modify():
+    formulaire_moduser = form.ModifyForm()
+    liste_username = form.liste_users()
+    formulaire_moduser.agent.choices = liste_username
+
+    if formulaire_moduser.validate_on_submit():
+        user = User.query.filter_by(username=formulaire_moduser.agent.data).first()
+        user.dgi = formulaire_moduser.dgi.data
+        user.manager = formulaire_moduser.manager.data
+        user.active = formulaire_moduser.active.data
+
+        user.set_password(formulaire_moduser.password.data)
+        db.session.add(user)
+        db.session.commit()
+        flash("Utilisateur modifié")
+        return redirect(url_for('main_blueprint.index'))
+    return render_template('manager_modify.html', title="Espace manager", form=formulaire_moduser)

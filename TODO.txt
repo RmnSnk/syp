@@ -1,12 +1,10 @@
 ## Liste des chose à faire
 
 # A finir
-- faire formulaire d'édition : https://rtjom.com/blog/2016/10/using-wtforms-with-selectfield-and-fieldlist/
-- voir aussi : https://www.youtube.com/watch?v=b9W2ul2VRRc
+- RAS
 
 # En cours de travail
-- Compléter la page manager.html afin de pouvoit gérer les agents déjà crés :
-           * modification (actif ou pas), reset du password, correction des numeros DGI ...
+- Permettre au manager d'attribuer les affaires
 
 # Pour plus tard :
 
@@ -14,4 +12,6 @@
 
 - La création de l'utilisateur ne devra plus demander que l'adresse mail. Un mot de passe aléatoire sera crée \n
 et les identifiants seront automatiquement envoyés par mail.
+
+- La modification de user renvoie les informations connues
 

@@ -24,7 +24,7 @@ class RegistrationForm(FlaskForm):
     email = StringField('Email Professionnel', validators=[DataRequired(), Email()])
     password = PasswordField('Mot de passe', validators=[DataRequired()])
     password2 = PasswordField('Confirmez le mot de passe', validators=[DataRequired(), EqualTo('password')])
-    manager = BooleanField('Créer un manager')
+    manager = BooleanField('Créer un manager ?')
     submit = SubmitField('Créer l\'utilisateur')
 
     def validate_email(self, email):
@@ -36,6 +36,26 @@ class RegistrationForm(FlaskForm):
             raise ValidationError('L\'adresse email doit se terminer par @dgfip.finances.gouv.fr')
 
     def validate_dgi(self, dgi):
+        # Mettre expression régulière pour n'avoir que des chiffres
+        if len(str(dgi.data)) != 6:
+            raise ValidationError('Le numéro DGI doit faire exactement 6 chiffes')
+        user = User.query.filter_by(dgi=dgi.data).first()
+        if user is not None:
+            raise ValidationError('Ce numéro a déjà été utilisé')
+
+
+class ModifyForm(FlaskForm):
+
+    agent = SelectField('Utilisateur à modifier')
+    dgi = IntegerField('Numéro DGI', validators=[DataRequired()])
+    password = PasswordField('Mot de passe', validators=[DataRequired()])
+    password2 = PasswordField('Confirmez le mot de passe', validators=[DataRequired(), EqualTo('password')])
+    manager = BooleanField('Créer un manager ?')
+    active = BooleanField('Utilisateur actif ?', default=True)
+    submit = SubmitField('Modifier l\'utilisateur')
+
+    def validate_dgi(self, dgi):
+        # Mettre expression régulière pour n'avoir que des chiffres
         if len(str(dgi.data)) != 6:
             raise ValidationError('Le numéro DGI doit faire exactement 6 chiffes')
         user = User.query.filter_by(dgi=dgi.data).first()
@@ -44,9 +64,8 @@ class RegistrationForm(FlaskForm):
 
 class DeleteForm(FlaskForm):
 
-    agent = SelectField('Utilisateur à supprimer', choices=["1", "2"])
+    agent = SelectField('Utilisateur à supprimer')
     submit = SubmitField('Supprimer l\'utilisateur')
-
 
 
 def liste_users():
